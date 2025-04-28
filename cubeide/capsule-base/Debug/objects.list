@@ -1,4 +1,7 @@
+"./Core/Src/adxl343.o"
 "./Core/Src/main.o"
+"./Core/Src/mlx90640_api.o"
+"./Core/Src/mlx90640_i2c_driver.o"
 "./Core/Src/stm32g4xx_hal_msp.o"
 "./Core/Src/stm32g4xx_it.o"
 "./Core/Src/syscalls.o"

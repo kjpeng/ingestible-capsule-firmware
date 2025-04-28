@@ -51,3 +51,48 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.eclipse.cdt.core 1 0 2025-04-24 05:37:05.315
 !MESSAGE Indexed 'capsule-base' (19 sources, 81 headers) in 4.84 sec: 4,840 declarations; 20,902 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0078%)
+!SESSION 2025-04-25 02:05:11.391 -----------------------------------------------
+eclipse.buildId=Version 1.18.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-04-25 02:05:44.967
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-04-25 02:05:44.969
+!MESSAGE Log4j2 initialized with config file C:\Users\kathe\Projects\ingestible-capsule-firmware\cubeide\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-04-25 02:06:07.399
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2025-04-25 02:12:45.685 -----------------------------------------------
+eclipse.buildId=Version 1.18.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-04-25 02:15:05.194
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-04-25 02:15:05.196
+!MESSAGE Log4j2 initialized with config file C:\Users\kathe\Projects\ingestible-capsule-firmware\cubeide\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-04-25 02:15:21.913
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2025-04-26 14:57:30.159 -----------------------------------------------
+eclipse.buildId=Version 1.18.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-04-26 15:00:16.696
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-04-26 15:00:16.698
+!MESSAGE Log4j2 initialized with config file C:\Users\kathe\Projects\ingestible-capsule-firmware\cubeide\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-04-26 15:00:33.994
+!MESSAGE Started RMI Server, listening on port 41337

@@ -22,7 +22,10 @@
 #include "MLX90640_API.h"
 #include "stm32g4xx_hal.h"
 
-extern I2C_HandleTypeDef mlx_handle;
+#define MLX_ADDR 0x33
+#define MLX90640_DEVID1 0x2407
+
+extern I2C_HandleTypeDef *mlx_handle;
 
 extern void MLX90640_I2CInit(void);
 extern int MLX90640_I2CGeneralReset(void);

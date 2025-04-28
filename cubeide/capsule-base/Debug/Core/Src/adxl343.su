@@ -1,0 +1,6 @@
+../Core/Src/adxl343.c:3:5:ADXL343_Write	32	static
+../Core/Src/adxl343.c:15:5:ADXL343_Read	32	static
+../Core/Src/adxl343.c:28:5:ADXL343_Init	16	static
+../Core/Src/adxl343.c:41:7:ADXL343_ReadX	40	static
+../Core/Src/adxl343.c:56:7:ADXL343_ReadY	40	static
+../Core/Src/adxl343.c:71:7:ADXL343_ReadZ	40	static

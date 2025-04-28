@@ -21,7 +21,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "adxl343.h"
+#include "mlx90640_api.h"
+#include "mlx90640_i2c_driver.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -31,7 +33,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define MLX_TA_SHIFT 8
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -54,7 +56,8 @@ static void MX_GPIO_Init(void);
 static void MX_I2C2_Init(void);
 static void MX_SPI1_Init(void);
 /* USER CODE BEGIN PFP */
-
+I2C_HandleTypeDef *adxl_handle;
+I2C_HandleTypeDef *mlx_handle;
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -94,7 +97,16 @@ int main(void)
   MX_I2C2_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
+  adxl_handle = &hi2c2;
+  mlx_handle = &hi2c2;
 
+  static uint16_t eeMLX90640[832];
+  paramsMLX90640 mlx90640;
+  static uint16_t mlx90640Frame[834];
+  float mlx_ta;
+  float mlx_emissivity = 0.95;
+  float mlx_tr;
+  static float mlx90640To[768];
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -104,10 +116,34 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-	  HAL_Delay(500);
-	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
-	  HAL_Delay(500);
+	  int adxl_init = ADXL343_Init();
+
+	  // expected value of adxl_chipid: 0xE5
+	  uint8_t adxl_chipid;
+	  ADXL343_Read(ADXL343_REG_DEVID, &adxl_chipid, 1);
+
+	  MLX90640_SetResolution(MLX_ADDR, 0x00);		// 16-bit resolution
+	  MLX90640_SetRefreshRate(MLX_ADDR, 0x00);		// 0.5 Hz
+	  MLX90640_SetChessMode(MLX_ADDR);				// chess mode
+	  MLX90640_DumpEE(MLX_ADDR, eeMLX90640);
+	  MLX90640_ExtractParameters(eeMLX90640, &mlx90640);
+	  uint16_t mlx_serialno[3];
+	  MLX90640_I2CRead(MLX_ADDR, MLX90640_DEVID1, 3, mlx_serialno);
+
+	  int mlx_status = MLX90640_SynchFrame(MLX_ADDR);
+	  if (mlx_status == 0) {
+		  MLX90640_GetFrameData(MLX_ADDR, mlx90640Frame);
+		  mlx_ta = MLX90640_GetTa(mlx90640Frame, &mlx90640);
+		  mlx_tr = mlx_ta - MLX_TA_SHIFT;
+		  MLX90640_CalculateTo(mlx90640Frame, &mlx90640, mlx_emissivity, mlx_tr, mlx90640To);
+	  }
+
+	  while (1) {
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+		  HAL_Delay(1000);
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
+		  HAL_Delay(500);
+	  }
   }
   /* USER CODE END 3 */
 }

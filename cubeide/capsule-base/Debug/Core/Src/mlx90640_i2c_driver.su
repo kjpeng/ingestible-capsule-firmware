@@ -1,0 +1,2 @@
+../Core/Src/mlx90640_i2c_driver.c:3:5:MLX90640_I2CRead	56	static
+../Core/Src/mlx90640_i2c_driver.c:31:5:MLX90640_I2CWrite	40	static

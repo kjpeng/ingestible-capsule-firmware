@@ -11,7 +11,7 @@ int MLX90640_I2CRead(uint8_t slaveAddr,uint16_t startAddress, uint16_t nMemAddre
   //   uint32_t Timeout
   // )
 
-  if (HAL_I2C_Mem_Read(&mlx_handle,
+  if (HAL_I2C_Mem_Read(mlx_handle,
                        slaveAddr << 1,
                        startAddress,
                        I2C_MEMADD_SIZE_16BIT,
@@ -43,7 +43,7 @@ int MLX90640_I2CWrite(uint8_t slaveAddr,uint16_t writeAddress, uint16_t data) {
   //   uint32_t Timeout
   // )
 
-  if (HAL_I2C_Mem_Write(&mlx_handle,
+  if (HAL_I2C_Mem_Write(mlx_handle,
                         slaveAddr << 1,
                         writeAddress,
                         I2C_MEMADD_SIZE_16BIT,

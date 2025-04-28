@@ -2,7 +2,7 @@
 
 int ADXL343_Write(uint8_t reg, uint8_t val) {
   uint8_t buf[2] = {reg, val};
-  if (HAL_I2C_Master_Transmit(&adxl_handle,
+  if (HAL_I2C_Master_Transmit(adxl_handle,
                               ADXL_ADDR << 1,
                               buf,
                               2,
@@ -13,7 +13,7 @@ int ADXL343_Write(uint8_t reg, uint8_t val) {
 }
 
 int ADXL343_Read(uint8_t reg, uint8_t *buf, uint16_t buf_size) {
-  if (HAL_I2C_Mem_Read(&adxl_handle,
+  if (HAL_I2C_Mem_Read(adxl_handle,
                        ADXL_ADDR << 1,
                        reg,
                        I2C_MEMADD_SIZE_8BIT,
@@ -40,7 +40,7 @@ int ADXL343_Init(void) {
 
 float ADXL343_ReadX(void) {
   uint8_t buf[2];
-  HAL_I2C_Mem_Read(&adxl_handle,
+  HAL_I2C_Mem_Read(adxl_handle,
                    ADXL_ADDR << 1,
                    ADXL343_REG_DATAX0,
                    I2C_MEMADD_SIZE_8BIT,
@@ -55,7 +55,7 @@ float ADXL343_ReadX(void) {
 
 float ADXL343_ReadY(void) {
   uint8_t buf[2];
-  HAL_I2C_Mem_Read(&adxl_handle,
+  HAL_I2C_Mem_Read(adxl_handle,
                    ADXL_ADDR << 1,
                    ADXL343_REG_DATAY0,
                    I2C_MEMADD_SIZE_8BIT,
@@ -70,7 +70,7 @@ float ADXL343_ReadY(void) {
 
 float ADXL343_ReadZ(void) {
   uint8_t buf[2];
-  HAL_I2C_Mem_Read(&adxl_handle,
+  HAL_I2C_Mem_Read(adxl_handle,
                    ADXL_ADDR << 1,
                    ADXL343_REG_DATAZ0,
                    I2C_MEMADD_SIZE_8BIT,

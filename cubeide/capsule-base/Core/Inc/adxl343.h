@@ -46,7 +46,7 @@
 #define SENSORS_GRAVITY_SUN (275.0F)     /**< The sun's gravity in m/s^2 */
 #define SENSORS_GRAVITY_STANDARD (SENSORS_GRAVITY_EARTH)
 
-extern I2C_HandleTypeDef adxl_handle;
+extern I2C_HandleTypeDef *adxl_handle;
 
 int ADXL343_Write(uint8_t reg, uint8_t val);
 int ADXL343_Read(uint8_t reg, uint8_t *buf, uint16_t buf_size);
